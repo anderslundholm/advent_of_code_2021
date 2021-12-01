@@ -22,5 +22,5 @@ func Part1() {
 		log.Fatalf("Could not find value: %v\n", err)
 	}
 
-	fmt.Printf("Day01 Part1 result: %d\n", count)
+	fmt.Printf("day01 part1 result: %d\n", count)
 }
