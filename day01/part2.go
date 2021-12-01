@@ -16,10 +16,11 @@ func Part2() {
 	if err != nil {
 		log.Fatalf("Could not read ints: %v\n", err)
 	}
-	product, err := partTwo(ints)
+
+	count := partTwo(ints)
 	if err != nil {
 		log.Fatalf("Could not find value: %v\n", err)
 	}
 
-	fmt.Printf("Day01 Part1 result: %d\n", product)
+	fmt.Printf("Day01 Part2 result: %d\n", count)
 }

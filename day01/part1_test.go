@@ -4,6 +4,6 @@ import (
 	"testing"
 )
 
-func TestMultiplyTwo(t *testing.T) {
+func TestPartOne(t *testing.T) {
 
 }
