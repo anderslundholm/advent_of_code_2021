@@ -29,6 +29,17 @@ func Abs(n int) int {
 	return n
 }
 
+// Sgn takes float64 and returns an int of 1, -1 or 0.
+func Sgn(a float64) int {
+	switch {
+	case a < 0:
+		return -1
+	case a > 0:
+		return +1
+	}
+	return 0
+}
+
 // MustAtoi takes a string and returns an int or logs a fatal error if convertion fails.
 func MustAtoi(s string) int {
 	num, err := strconv.Atoi(s)
