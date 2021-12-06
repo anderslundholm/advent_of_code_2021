@@ -18,7 +18,7 @@ func Part1() {
 	}
 
 	fishList := parseFile(lines)
-	result := simulateFish(fishList, 80)
+	result := simulateFish2(fishList, 80)
 
 	fmt.Printf("day06 part1 result: %d\n", result)
 }
