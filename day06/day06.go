@@ -1,21 +1,5 @@
 package day06
 
-import (
-	"strings"
-
-	"github.com/anderslundholm/advent_of_code_2021/pkg/util"
-)
-
-func parseFile(lines []string) []int {
-	var fishList []int
-
-	for _, fish := range strings.Split(lines[0], ",") {
-		fishList = append(fishList, util.MustAtoi(fish))
-	}
-
-	return fishList
-}
-
 // First itteration, save all fish in a list, does not scale to higher numbers of days (150+).
 func simulateFish(fishList []int, days int) int {
 	for i := 0; i < days; i++ {

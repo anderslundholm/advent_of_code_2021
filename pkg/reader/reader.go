@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 // OpenFile ---
@@ -30,6 +31,27 @@ func ReadInts(filePath string) ([]int, error) {
 			return result, err
 		}
 		result = append(result, x)
+	}
+	return result, s.Err()
+}
+
+// ReadInts reads and returns int from file.
+func ReadCommaSeparatedInts(filePath string) ([]int, error) {
+	f := openFile(filePath)
+	defer f.Close()
+
+	s := bufio.NewScanner(f)
+	var result []int
+
+	for s.Scan() {
+		for _, x := range strings.Split(s.Text(), ",") {
+			// fmt.Println(strings.Split(s.Text(), ","))
+			y, err := strconv.Atoi(x)
+			if err != nil {
+				return result, err
+			}
+			result = append(result, y)
+		}
 	}
 	return result, s.Err()
 }

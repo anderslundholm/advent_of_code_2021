@@ -12,12 +12,11 @@ import (
 func Part2() {
 	defer timer.ExecutionTimer("Part2")()
 
-	lines, err := reader.ReadLines("day06/input.txt")
+	fishList, err := reader.ReadCommaSeparatedInts("day06/input.txt")
 	if err != nil {
 		log.Fatalf("Could not read ints: %v\n", err)
 	}
 
-	fishList := parseFile(lines)
 	result := simulateFish2(fishList, 256)
 
 	fmt.Printf("day06 part2 result: %d\n", result)
