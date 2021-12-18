@@ -10,6 +10,10 @@ import (
 	"github.com/anderslundholm/advent_of_code_2021/day04"
 	"github.com/anderslundholm/advent_of_code_2021/day05"
 	"github.com/anderslundholm/advent_of_code_2021/day06"
+	"github.com/anderslundholm/advent_of_code_2021/day07"
+	"github.com/anderslundholm/advent_of_code_2021/day08"
+	"github.com/anderslundholm/advent_of_code_2021/day09"
+	"github.com/anderslundholm/advent_of_code_2021/day10"
 	"github.com/spf13/cobra"
 
 	homedir "github.com/mitchellh/go-homedir"
@@ -51,6 +55,10 @@ func init() {
 	day04.AppendCommand(rootCmd)
 	day05.AppendCommand(rootCmd)
 	day06.AppendCommand(rootCmd)
+	day07.AppendCommand(rootCmd)
+	day08.AppendCommand(rootCmd)
+	day09.AppendCommand(rootCmd)
+	day10.AppendCommand(rootCmd)
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.advent_of_code_2021.yaml)")
 
