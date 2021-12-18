@@ -32,7 +32,6 @@ Line:
 
 func calcSyntaxErrors2(lines [][]string) int {
 	charMap := map[string]int{"(": 1, "[": 2, "{": 3, "<": 4, ")": 1, "]": 2, "}": 3, ">": 4}
-	// endChars := map[int]string{1: ")", 2: "]", 3: "}", 4: ">"}
 	var totalScores []int
 	var finalScore int
 Line:
