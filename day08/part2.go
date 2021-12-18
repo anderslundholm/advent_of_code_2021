@@ -12,13 +12,13 @@ import (
 func Part2() {
 	defer timer.ExecutionTimer("Part2")()
 
-	lines, err := reader.ReadLines("day08/input.txt")
+	lines, err := reader.ReadLines("day08/test_input.txt")
 	if err != nil {
 		log.Fatalf("Could not read ints: %v\n", err)
 	}
 
-	_, output := parseInput(lines)
-	result := countUniqueDigits(output)
+	signals, output := parseInput(lines)
+	result := decodeOutput(signals, output)
 
 	fmt.Printf("day08 part2 result: %d\n", result)
 }
