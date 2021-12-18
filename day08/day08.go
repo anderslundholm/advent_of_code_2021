@@ -33,11 +33,10 @@ func countUniqueDigits(output [][]string) int {
 }
 
 func decodeOutput(signals, output [][]string) int {
-	fmt.Printf("%s\n\n\n", signals)
-	fmt.Println(output)
+	var total int
 	var digits = make(map[int]string, 10)
 
-	for _, line := range signals {
+	for n, line := range signals {
 		for _, code := range line {
 			switch len(code) {
 			case 2:
@@ -46,40 +45,61 @@ func decodeOutput(signals, output [][]string) int {
 				digits[7] = code
 			case 4:
 				digits[4] = code
-			case 5:
-
-			case 6:
-
 			case 7:
 				digits[8] = code
 			}
 		}
+		for _, code := range line {
+			switch len(code) {
+			case 5:
+				if countInCommon(code, digits[4]) == 2 {
+					digits[2] = code
 
+				} else if countInCommon(code, digits[1]) == 2 {
+					digits[3] = code
+
+				} else {
+					digits[5] = code
+				}
+
+			case 6:
+				if countInCommon(code, digits[1]) == 1 {
+					digits[6] = code
+
+				} else if countInCommon(code, digits[4]) == 4 {
+					digits[9] = code
+
+				} else {
+					digits[0] = code
+				}
+			}
+		}
+		total += addOutputValues(digits, output[n])
 	}
-
-	fmt.Println(digits)
-	return addOutputValues(digits, output)
+	return total
 }
 
-func addOutputValues(digits map[int]string, output [][]string) int {
-	result := 0
-
-	for n, line := range output {
-		number := ""
-		for _, code := range line {
-			for k := range digits {
-
-				number += fmt.Sprintf("%d", k)
-
+func countInCommon(a, b string) int {
+	count := 0
+	for _, x := range a {
+		for _, y := range b {
+			if x == y {
+				count++
 			}
-			fmt.Println(n, code, number)
-
 		}
-
-		total := util.MustAtoi(number)
-		result += total
-
 	}
+	return count
+}
 
-	return result
+func addOutputValues(digits map[int]string, output []string) int {
+	numString := ""
+	for _, code := range output {
+		for num, decoded := range digits {
+			common := countInCommon(decoded, code)
+			if common == len(decoded) && common == len(code) {
+				numString += fmt.Sprintf("%d", num)
+			}
+		}
+	}
+	return util.MustAtoi(numString)
 }
