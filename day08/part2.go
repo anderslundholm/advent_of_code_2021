@@ -17,8 +17,8 @@ func Part2() {
 		log.Fatalf("Could not read ints: %v\n", err)
 	}
 
-	_, output := parseInput(lines)
-	result := countUniqueDigits(output)
+	signals, output := parseInput(lines)
+	result := decodeOutput(signals, output)
 
 	fmt.Printf("day08 part2 result: %d\n", result)
 }
