@@ -20,7 +20,8 @@ func countUniqueDigits(output [][]string) int {
 	count := 0
 	for _, x := range output {
 		for _, y := range x {
-			if len(y) == 2 || len(y) == 3 || len(y) == 4 || len(y) == 7 {
+			switch len(y) {
+			case 2, 3, 4, 7:
 				count++
 			}
 		}
