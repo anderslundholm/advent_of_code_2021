@@ -108,3 +108,27 @@ func ReadMultiLineRunes(filePath string) ([][]string, error) {
 	result = append(result, inner)
 	return result, s.Err()
 }
+
+// ReadMultiLineInts reads from file line by line and returns a 2d slice of ints.
+func ReadMultiLineInts(filePath string) ([][]int, error) {
+	f := openFile(filePath)
+	defer f.Close()
+	s := bufio.NewScanner(f)
+	s.Split(bufio.ScanRunes)
+	var result [][]int
+	var inner []int
+	for s.Scan() {
+		if s.Text() == "\n" {
+			result = append(result, inner)
+			inner = []int{}
+		} else {
+			x, err := strconv.Atoi(s.Text())
+			if err != nil {
+				return result, err
+			}
+			inner = append(inner, x)
+		}
+	}
+	result = append(result, inner)
+	return result, s.Err()
+}
